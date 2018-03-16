@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+background-color:rgb(233, 233, 251);
+      background-image:no-repeat;
+      background-size:cover;
+     
+        }
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0; 
+    }
+
+    .uli {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+    }
+
+div.container {
+    display:inline-block;
+    width:10px;
+}
+ .uli {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(9, 9, 42);
+    }
+lii {
+    float: left;
+}
+
+lii a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    
+}
+
+lii a:hover {
+    background-color: #111111;
+}
+
+
+nav {
+    float: left;
+    max-width: 170px;
+    margin: 0;
+    padding: 3.5em;
+   --background: rgb(18, 18, 84);
+}
+
+nav uli {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav uli a {
+    text-decoration: none;
+}
+
+.item1 { grid-area: header; 
+         color: black;
+         background-color: white;
+         padding: 1em;
+         text-align: left;
+         font-size: 15px;
+         }
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header';
+    
+  grid-gap: 10px;
+  background-color:rgb(233, 233, 251);
+  padding: 10px;
+}
+
+div.container {
+    
+    
+    left:10%;
+    right:50%;
+    text-align:center;
+}
+
+
+.list{color:black;
+    }
+
+
+</style>
+</head>
+<body>
+    
+    
+<ul class="uli">
+  <lii><a href="#home">Home</a></lii>
+  <lii><a href="#news">Profile</a></lii>
+  <lii><a href="#contact">Settings</a></lii>
+  <lii><a href="#about">Login</a></lii>
+  <lii><a href="#about">Register</a></lii>
+</ul>
+
+<div class="grid-container">
+<div class="item1">Settings</div>
+</div>
+    
+<div class="container">
+<ul class="list">
+  <li>Password</li>
+  <ul class="list">
+    <li>Forgot</li>
+    <li>Change</li>
+    </ul>
+  <li>Change
+    <ul class="list">
+    <li>Country</li>
+    <li>City</li>
+    <li>Profile_Picture</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+
+    
+</body>
+</html>
