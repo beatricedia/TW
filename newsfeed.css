@@ -1,0 +1,24 @@
+.gridContainer{
+
+    display: grid;
+    grid-template-columns: 25%  25% 25% 25%;
+    
+}
+.navHeader{
+
+    background: green;
+    grid-column: 1/6;
+    grid-row: 1/2;
+}
+
+.sideNavigation{
+    background: red;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.mainContent{
+
+    background: blue;
+    grid-column: 2/6;
+    grid-row: 2/3;
+}

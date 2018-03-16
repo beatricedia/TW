@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="newsfeed.css" />
     <script src="main.js"></script>
 </head>
-<body>
-    <header role="banner">
+<body class="gridContainer">
+    <header role="banner" class="navHeader">
         <h1>
             Migration NewsFeed
         </h1>
@@ -27,8 +27,24 @@
             </ul>
         </nav>
     </header>
-
-    <main role="main">
+    
+            <nav role="navigation" class="sideNavigation">
+                    <ul>
+                        <li>
+                            Report
+                        </li>
+                        <li>
+                            Map
+                        </li>
+                        <li>
+                            Statistics
+                        </li>
+                        <li>
+                            Vizualizare
+                        </li>
+                    </ul>
+                </nav>
+    <main role="main" class="mainContent">
             <section>
                 <h2>
                     RSS
@@ -79,21 +95,6 @@
                 </article>
             </section>
     </main>
-    <nav role="navigation">
-        <ul>
-            <li>
-                Report
-            </li>
-            <li>
-                Map
-            </li>
-            <li>
-                Statistics
-            </li>
-            <li>
-                Vizualizare
-            </li>
-        </ul>
-    </nav>
+
 </body>
 </html>
