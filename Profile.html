@@ -2,41 +2,35 @@
 <html>
 <head>
 <style>
-body {background-image:url('wallpaper-wallpapers-custom-blurry-lights-blurred-tower-photogrpahy-red-admin-backgrounds.jpg');
+body{background-image:url('wallpaper-wallpapers-custom-blurry-lights-blurred-tower-photogrpahy-red-admin-backgrounds.jpg');
       background-image:no-repeat;
       background-size:cover;
      
-        }
-h1 {color:white;
-    font-family:verdana;
-    font-size:30px;
-    opacity:0.9;
     }
-#p01 {color:white;
-       text-align:left;
-       margin: 5px;
-     }    
-     
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
+  h1 {color:black;
+        font-family:verdana;
+       font-size:30px;
+
+    }
+    ul {
+       list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
     }
 
-div.container {
+   div.container {
     display:inline-block;
     width:10px;
-}
+    }
  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333333;
+    background-color:rgb(9, 9, 42);
     }
-
 li {
     float: left;
 }
@@ -48,26 +42,19 @@ li a {
     padding: 16px;
     text-decoration: none;
     
-}
+      }
 
 li a:hover {
     background-color: #111111;
 }
 
 
-header, footer {
-    padding: 0.7em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
-}
-
 nav {
     float: left;
-    max-width: 160px;
+    max-width: 170px;
     margin: 0;
-    padding: 1em;
+    padding: 3.5em;
+   --background: rgb(18, 18, 84);
 }
 
 nav ul {
@@ -79,54 +66,95 @@ nav ul a {
     text-decoration: none;
 }
 
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
+
+.item1 { grid-area: header; 
+         color: black;
+         background-color: white;
+         padding: 1em;
+         text-align: left;
+         font-size: 15px;
+      
+         
+         }
+.item2 { grid-area: menu;
+         color: white;
+         background-color: rgb(8, 8, 43);
+         padding: 1em;
+         text-align: left;
+         font-size: 15px;
+         
+       }
+       
+.item3 { grid-area: main;
+         background-color:rgb(233, 233, 251)
+         padding: 1em;
+         text-align: left;
+         font-size: 15px;
+         
+         
+        }
+.item4 { grid-area: right;
+         background-color: white;
+         padding: 1em;
+         text-align: left;
+         font-size: 15px;
+         border-radius: 20px;
+         
+       }
+.item5 { grid-area: footer; 
+         background-color:rgb(233, 233, 251)
+         padding: 1em;
+         text-align: left;
+         font-size: auto;
+         border:
+        
+         
+       }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+  grid-gap: 10px;
+  background-color:rgb(233, 233, 251);
+  padding: 10px;
+  
 }
+
+
+
 </style>
 </head>
 <body>
+    
+    
 <ul>
   <li><a href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">Profile</a></li>
+  <li><a href="#news">Profile</a></li>
+  <li><a href="#contact">Settins</a></li>
   <li><a href="#about">Login</a></li>
+  <li><a href="#about">Register</a></li>
 </ul>
-</ul>
 
-
-<!--div class="container"-->
-
-<header>
-   <h1>My Profile</h1>
-</header>
-  
-<nav>
-  <a href="https://www.w3schools.com/html/"><input type="button"  value="Settings"></a>
-<br>
-<a href="https://www.w3schools.com/html/"><input type="button"  value="Add Migration"></a>
-<br>
-<a href="https://www.w3schools.com/html/"><input type="button" onclick="alert('Hello World!')" value="See Migration"></a>
-</nav>
-
-<article>
-  <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="float:left;width:128px;height:128px; margin:10px;">
-<br>
-<p id="p01"><b>User:</b></p>
-<p id="p01"><b>Places I traveled:</b></p>
-
-</article>
-<br>
-
-<hr>
-
-<h2 id="p01"> Migration Overview </h2>
-
-
-</div>
-
+<div class="grid-container">
+   <div class="item1">Profile</div>
+   <div class="item2"><p>Add Migration</p>
+                      <p>See Migration</p> 
+   </div>
+   <div class="item3"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="float:left;width:128px;height:128px; margin:10px;border:1px; border-color:rgb(8, 8, 43)">
+   
+   <p> User:</p>
+   <p> Email: </p>
+   </div>
+   
+   <div class="item4">Aici vor aparea Report-urile urerului.</div>
+   <div class="item5">
+    <h3>Migration Overview</h3>
+   </div>
+   
+</div>    
+    
 </body>
 </html>
