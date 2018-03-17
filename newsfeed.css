@@ -1,24 +1,87 @@
+
+
+body, html,.gridContainer {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style-type: none;
+}
+.uli {
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #140e35;
+    }
+.uli li{
+
+    float: left;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+.uli li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    
+}
+/*Container*/
 .gridContainer{
 
     display: grid;
-    grid-template-columns: 25%  25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 7% 1fr;
+    grid-gap: 10px;
+    background-color:rgb(233, 233, 251);
+  padding: 10px;
     
 }
 .navHeader{
 
-    background: green;
-    grid-column: 1/6;
+    
+    grid-column: 2/6;
     grid-row: 1/2;
+    color: black;
+    background-color: white;
+    padding: 1em;
+    text-align: left;
+    
+}
+.navHeader h1{
+
+    float: right;
+    margin: 0 auto;
+    padding: 0;
+}
+.navHeader li{
+
+    display: inline-block;
+    
 }
 
+
 .sideNavigation{
-    background: red;
+    background: rgb(199, 118, 118);
     grid-column: 1/2;
-    grid-row: 2/3;
+    grid-row: 1/5;
+    color: white;
+    background-color: rgb(8, 8, 43);
+    padding: 1em;
+    text-align: left;
+    font-size: 15px;
+    height: 95%;
 }
 .mainContent{
 
-    background: blue;
+    
     grid-column: 2/6;
-    grid-row: 2/3;
+    grid-row: 2/5;
 }
+/*End grid model*/
