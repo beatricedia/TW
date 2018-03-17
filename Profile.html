@@ -2,134 +2,8 @@
 <html>
 
 <head>
-<<<<<<< HEAD
-<style>
-body{background-image:url('wallpaper-wallpapers-custom-blurry-lights-blurred-tower-photogrpahy-red-admin-backgrounds.jpg');
-      background-image:no-repeat;
-      background-size:cover;
-     
-    }
-    body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-  h1 {color:black;
-        font-family:verdana;
-       font-size:30px;
-    }
-    ul {
-       list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333333;
-    }
-   div.container {
-    display:inline-block;
-    width:10px;
-    height: 80%;
-    }
- ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:rgb(9, 9, 42);
-    }
-li {
-    float: left;
-}
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    
-      }
-li a:hover {
-    background-color: #111111;
-}
-nav {
-    float: left;
-    max-width: 170px;
-    margin: 0;
-    padding: 3.5em;
-   --background: rgb(18, 18, 84);
-}
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
-}
-.item1 { grid-area: header; 
-         color: black;
-         background-color: white;
-         padding: 1em;
-         text-align: left;
-         font-size: 15px;
-         height: 20%;
-      
-         
-         }
-.item2 { grid-area: menu;
-         color: white;
-         background-color: rgb(8, 8, 43);
-         padding: 1em;
-         text-align: left;
-         font-size: 15px;
-         height: 95%;
-       }
-       
-.item3 { grid-area: main;
-         background-color:rgb(233, 233, 251)
-         padding: 1em;
-         text-align: left;
-         font-size: 15px;
-         height: 95%;
-         
-        }
-.item4 { grid-area: right;
-         background-color: white;
-         padding: 1em;
-         text-align: left;
-         font-size: 17px;
-         border-radius: 20px;
-         
-       }
-.item5 { grid-area: footer; 
-         background-color:rgb(233, 233, 251)
-         padding: 1em;
-         text-align: left;
-         font-size: auto;
-         height: 75%;
-         
-       }
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'menu header header header header header'
-    'menu main main main right right'
-    'menu footer footer footer footer footer';
-  grid-gap: 10px;
-  background-color:rgb(233, 233, 251);
-  padding: 10px;
-  height: 100%;
-}
-</style>
-=======
     <style>
-        body {
-            background-image: url('wallpaper-wallpapers-custom-blurry-lights-blurred-tower-photogrpahy-red-admin-backgrounds.jpg');
-            background-image: no-repeat;
-            background-size: cover;
-
-        }
-
+       
         body,
         html {
             height: 100%;
@@ -137,21 +11,7 @@ nav ul a {
             padding: 0;
         }
 
-        h1 {
-            color: black;
-            font-family: verdana;
-            font-size: 30px;
-
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333333;
-        }
-
+       
         div.container {
             display: inline-block;
             width: 10px;
@@ -184,32 +44,16 @@ nav ul a {
         }
 
 
-        nav {
-            float: left;
-            max-width: 170px;
-            margin: 0;
-            padding: 3.5em;
-            --background: rgb(18, 18, 84);
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul a {
-            text-decoration: none;
-        }
-
-
         .item1 {
             grid-area: header;
             color: black;
             background-color: white;
             padding: 1em;
             text-align: left;
-            font-size: 15px;
-            height: 20%;
+            font-size: 20px;
+            height: 15%;
+            font-family: "Courier body copy";
+
 
 
         }
@@ -222,15 +66,18 @@ nav ul a {
             text-align: left;
             font-size: 15px;
             height: 95%;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .item3 {
             grid-area: main;
-            background-color: rgb(233, 233, 251) ;
+            background-color: rgb(233, 233, 251);
             padding: 1em;
             text-align: left;
             font-size: 15px;
             height: 95%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
 
         }
 
@@ -246,8 +93,7 @@ nav ul a {
 
         .item5 {
             grid-area: footer;
-            background-color: rgb(233, 233, 251) ;
-            padding: 1em;
+            background-color: rgb(233, 233, 251) padding: 1em;
             text-align: left;
             font-size: auto;
             height: 75%;
@@ -256,77 +102,62 @@ nav ul a {
 
         .grid-container {
             display: grid;
-            grid-template-areas: 'menu header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+            grid-template-areas: 'menu header header header header header' 'menu main main right right right' 'menu footer footer footer footer footer';
             grid-gap: 10px;
             background-color: rgb(233, 233, 251);
             padding: 10px;
             height: 100%;
         }
     </style>
->>>>>>> 9c72ee3af00067f98710ba696edc6a1c7ef6638f
+
+    <script>
+        function createPopup(url) {
+            var newWindow = window.open(url, 'migrationStatistics', 'height=440, width=710');
+
+            if (window.focus) {
+                newWindow.focus();
+            }
+            return false;
+        }
+    </script>
+
 </head>
 
 <body>
-<<<<<<< HEAD
-    
-    
-<ul>
-  <li><a href="newsfeed.html">Home</a></li>
-  <li><a href="Profile.html">Profile</a></li>
-  <li><a href="Settings.html">Settings</a></li>
-  <li><a href="#about">Logout</a></li>
-</ul>
-
-<div class="grid-container">
-   <div class="item1">Profile</div>
-   <div class="item2"><p>Add Migration</p>
-                      <p>See Migration</p> 
-   </div>
-   <div class="item3"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="float:left;width:128px;height:128px; margin:10px;border: 8px solid transparent; border-image:30 round; border-color:rgb(8, 8, 43)">
-   
-   <p> User:</p>
-   <p> Email: </p>
-   </div>
-   
-   <div class="item4">Aici vor aparea Report-urile urerului.</div>
-   <div class="item5">
-    <h3>Migration Overview</h3>
-   </div>
-   
-</div>    
-    
-=======
-
 
     <ul>
         <li>
-            <a href="#home">Home</a>
+            <a href="newsfeed.html">Home</a>
         </li>
         <li>
-            <a href="#news">Profile</a>
+            <a href="Profile.html">Profile</a>
         </li>
         <li>
-            <a href="#contact">Settins</a>
+            <a href="Settings.html">Settings</a>
         </li>
         <li>
-            <a href="#about">Login</a>
-        </li>
-        <li>
-            <a href="#about">Register</a>
+            <a href="#about">Logout</a>
         </li>
     </ul>
 
     <div class="grid-container">
-        <div class="item1">Profile</div>
+        <div class="item1">
+            <b>Profile</b>
+        </div>
         <div class="item2">
             <p>Add Migration</p>
             <p>See Migration</p>
+            <p onclick="return createPopup('Get_statistics.html')">Generate Reports</p>
         </div>
         <div class="item3">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="float:left;width:128px;height:128px; margin:10px;border: 8px solid transparent; border-image:30 round; border-color:rgb(8, 8, 43)">
+            <img src="blank-profile-picture.png" style="float:left;width:128px;height:128px; margin:10px;border: 8px solid transparent; border-image:30 round; border-color:rgb(8, 8, 43)">
 
-            <p> User:</p>
-            <p> Email: </p>
+            <p>
+                <b>User:</b>
+            </p>
+            <p>
+                <b>Email:</b>
+            </p>
         </div>
 
         <div class="item4">Aici vor aparea Report-urile urerului.</div>
@@ -336,7 +167,6 @@ nav ul a {
 
     </div>
 
->>>>>>> 9c72ee3af00067f98710ba696edc6a1c7ef6638f
 </body>
 
 </html>
