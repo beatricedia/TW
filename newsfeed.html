@@ -2,99 +2,64 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script src="newsfeed.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="newsfeed.css" />
-    <script src="main.js"></script>
+
+
 </head>
 
 <body>
 
-        <nav role="navigation">
-                <ul class="uli">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#news">Profile</a></li>
-                        <li><a href="#contact">Settings</a></li>
-                        <li><a href="#about">Logout</a></li>
-                      </ul>
-            </nav>
-    <div class="gridContainer">
-    <header role="banner" class="navHeader">
-        <h1>
-            Migration NewsFeed
-        </h1>
-    </header>
-
-    <nav role="navigation" class="sideNavigation">
-        <ul>
+    <nav role="navigation">
+        <ul class="uli">
             <li>
-                Report
+                <a href="newsfeed.html">Home</a>
             </li>
             <li>
-                Map
+                <a href="Profile.html">Profile</a>
             </li>
             <li>
-                Statistics
+                <a href="Settings.html">Settings</a>
             </li>
             <li>
-                Vizualizare
+                <a href="#">Logout</a>
             </li>
         </ul>
     </nav>
-    <main role="main" class="mainContent">
-        <section>
-            <h2>
-                RSS
-            </h2>
-            <article role="article">
-                <h3>
-                    User 1
-                </h3>
-                <p>
-                    There is a migration from Iasi to Amsterdam.
-                </p>
-                <footer role="contentinfo">
-                    21.02.2017 21:00 Iasi
-                </footer>
-            </article>
-            <article role="article">
-                <h3>
-                    User 2
-                </h3>
-                <p>
-                    There is a migration from Iasi to Bucharest.
-                </p>
-                <footer role="contentinfo">
-                    20.04.2017 23:20 Bucharest
-                </footer>
-            </article>
-            <article role="article">
-                <h3>
-                    User 4
-                </h3>
-                <p>
-                    This user just updated his location from Bucharest to New York.
-                </p>
-                <footer role="contentinfo">
-                    23.04.2018 15:30 New York
-                </footer>
-            </article>
-            <article role="article">
-                <h3>
-                    User 5
-                </h3>
-                <p>
-                    This user just updated his location from London to Paris.
-                </p>
-                <footer role="contentinfo">
-                    25.04.2018 15:30 Paris
-                </footer>
-            </article>
-        </section>
-    </main>
-</div>
+    <div class="gridContainer">
+        <header role="banner" class="navHeader">
+            <h1>
+                Migration NewsFeed
+            </h1>
+        </header>
+
+        <nav role="navigation" class="sideNavigation">
+            <ul>
+                <li>
+                    Report
+                </li>
+                <li>
+                    Statistics
+                </li>
+                <li>
+                    Vizualizare
+                </li>
+            </ul>
+        </nav>
+        <main role="main" class="mainContent">
+            <section>
+                <div id="mapid"></div>
+            </section>
+        </main>
+    </div>
 
 </body>
 
