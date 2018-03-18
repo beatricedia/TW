@@ -1,138 +1,179 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-body {
-background-color:rgb(233, 233, 251);
-      background-image:no-repeat;
-      background-size:cover;
-     
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
         }
-  body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0; 
-    }
 
-    .uli {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
-    }
+        div.container {
+            display: inline-block;
+            width: 10px;
+            height: 80%;
+        }
 
-div.container {
-    display:inline-block;
-    width:10px;
-}
- .uli {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:rgb(9, 9, 42);
-    }
-lii {
-    float: left;
-}
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(9, 9, 42);
+        }
 
-lii a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    
-}
+        li {
+            float: left;
+        }
 
-lii a:hover {
-    background-color: #111111;
-}
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
 
+        }
 
-nav {
-    float: left;
-    max-width: 170px;
-    margin: 0;
-    padding: 3.5em;
-   --background: rgb(18, 18, 84);
-}
+        li a:hover {
+            background-color: #111111;
+        }
 
-nav uli {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav uli a {
-    text-decoration: none;
-}
+        .item1 {
+            grid-area: header;
+            color: black;
+            background-color: white;
+            padding: 1em;
+            text-align: left;
+            font-size: 20px;
+            height: 15%;
+            font-family: "Courier body copy";
+        }
 
-.item1 { grid-area: header; 
-         color: black;
-         background-color: white;
-         padding: 1em;
-         text-align: left;
-         font-size: 15px;
-         }
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header header';
-    
-  grid-gap: 10px;
-  background-color:rgb(233, 233, 251);
-  padding: 10px;
-}
-
-div.container {
-    
-    
-    left:10%;
-    right:50%;
-    text-align:center;
-}
+        .item2 {
+            grid-area: left;
+            color: white;
+            background-color: rgb(233, 233, 251);
+            padding: 1em;
+            text-align: left;
+            font-size: 15px;
+            height: 95%;
+        }
 
 
-.list{color:black;
-    }
+        .grid-container {
+            display: grid;
+            grid-template-areas: 'header header header header header header' 'left left left left left left' ;
+            grid-gap: 10px;
+            background-color: rgb(233, 233, 251);
+            padding: 10px;
+            height: 100%;
+        }
 
 
-</style>
+        .form input {
+            font-family: Arial;
+            outline: 0;
+            background: lightgray;
+            width: 150%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 15px;
+            position: relative;
+            
+        }
+
+        .form button {
+            font-family: Arial;
+            text-transform: uppercase;
+            background: rgb(9, 9, 42);
+            width: 50%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            margin: 15px;
+            border-radius: 10px;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: rgb(233, 233, 251);
+        }
+
+        div.container {
+            left: 40%;
+            right: 50%;
+            text-align: center;
+            
+        }
+    </style>
 </head>
+
+
 <body>
-    
-    
-<ul class="uli">
-  <lii><a href="newsfeed.html">Home</a></lii>
-  <lii><a href="Profile.html">Profile</a></lii>
-  <lii><a href="Settings.html">Settings</a></lii>
-  <lii><a href="#about">Logout</a></lii>
-</ul>
 
-<div class="grid-container">
-<div class="item1">Settings</div>
-</div>
-    
-<div class="container">
-<ul class="list">
-  <li>Password</li>
-  <ul class="list">
-    <li>Forgot</li>
-    <li>Change</li>
+
+    <ul>
+        <li>
+            <a href="newsfeed.html">Home</a>
+        </li>
+        <li>
+            <a href="Profile.html">Profile</a>
+        </li>
+        <li>
+            <a href="Settings.html">Settings</a>
+        </li>
+        <li>
+            <a href="#about">Logout</a>
+        </li>
     </ul>
-  <li>Change
-    <ul class="list">
-    <li>Country</li>
-    <li>City</li>
-    <li>Profile_Picture</li>
-    </ul>
-  </li>
-</ul>
-
-</div>
 
 
+    <div class="grid-container">
+        <div class="item1">
+            <b>Settings</b>
+        </div>
+        
+        <div class="form">
+              
+            <div class="item2">
+                <input type="password" placeholder="change password" />
+                <br>
+                <br>
+                <input type="password" placeholder="confirm password" />
+                <br>
+                <br>
+                <input type="text" placeholder="email" />
+                <br>
+                <br>
+                <input type="text" placeholder="change email" />
+                <br>
+                <br>
+                <input type="text" placeholder="country" />
+                <br>
+                <br>
+                <input type="text" placeholder="change country" />
+                <br>
+                <br>
+                <input type="text" placeholder="city" />
+                <br>
+                <br>
+                <input type="text" placeholder="change city" />
+            </div>
+            <button>update</button>
+        </div>
     
+    </div>
+
 </body>
+
 </html>
