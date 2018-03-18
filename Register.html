@@ -1,173 +1,158 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-body {
-background-color:rgb(233, 233, 251);
-      background-image:no-repeat;
-      background-size:cover;
-     
+    <style>
+        body {
+            background-color: rgb(233, 233, 251);
+            background-image: no-repeat;
+            background-size: cover;
         }
-  body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0; 
-    }
 
-h1 {color:black;
-    font-family:verdana;
-    font-size:30px;
-   
-    }
-    ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
-    }
-
-div.container {
-    
-    --position:relative;
-    left:40%;
-    right:50%;
-    text-align:center;
-}
- ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:rgb(9, 9, 42);
-    }
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    
-}
-
-li a:hover {
-    background-color: #111111;
-}
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
 
-nav {
-    float: left;
-    max-width: 170px;
-    margin: 0;
-    padding: 3.5em;
-   --background: rgb(18, 18, 84);
-}
+        div.container {
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
-}
+            left: 40%;
+            right: 50%;
+            text-align: center;
+        }
 
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(9, 9, 42);
+        }
 
+        li {
+            float: left;
+        }
 
-.item1 { grid-area: header; 
-         color: black;
-         background-color: white;
-         padding: 1em;
-         text-align: left;
-         font-size: 15px;
-         }
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header header';
-    
-  grid-gap: 10px;
-  background-color:rgb(233, 233, 251);
-  padding: 10px;
-}
-   
-    
-  
-}
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+
+        }
+
+        li a:hover {
+            background-color: #111111;
+        }
 
 
-</style>
+        .item1 {
+            grid-area: header;
+            color: black;
+            background-color: white;
+            padding: 1em;
+            text-align: left;
+            font-size: 20px;
+            font-family: "Courier body copy";
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas: 'header header header header header header';
+
+            grid-gap: 10px;
+            background-color: rgb(233, 233, 251);
+            padding: 10px;
+        }
+        
+    </style>
 </head>
+
 <body>
-    
-    
-<ul>
-  <li><a href="newsfeed.html">Home</a></li>
-  <li><a href="Profile.html">Profile</a></li>
-  <li><a href="Settings.html">Settings</a></li>
-  <li><a href="#about">Logout</a></li>
-</ul>
 
-<div class="grid-container">
-<div class="item1">Register</div>
-</div>
 
-<div class="container">
-<br><br>
-<form action="/action_page.php">
-First name:<br>
-<input type="text" name="firstname">
-<br>
-Last name:<br>
-<input type="text" name="lastname">
-<br>
-Username:<br>
-<input type="text" name="username">
-<br>
-Password:<br>
-<input type="password" name="psw">
-<br>
-Confirm Password:<br>
-<input type="password" name="confirm password">
-<br>
-Email:<br>
-<input type="text" name="email">
-<br>
-Country:<br>
-<input type="text" name="country">
-<br>
-City:<br>
-<input type="text" name="city">
-<br>
-Birthday:<br>
-  <input type="date" name="bday">
-  <br>
-<p>Gender:</p>
-  <input type="radio" name="gender" value="male" checked> Male
-  <input type="radio" name="gender" value="female"> Female  
-<p>Preferences regarding transportation</p>
-<input type="checkbox" name="vehicle1" value="Plain">Plain
+    <ul>
+        <li>
+            <a href="newsfeed.html">Home</a>
+        </li>
+        <li>
+            <a href="Profile.html">Profile</a>
+        </li>
+        <li>
+            <a href="Settings.html">Settings</a>
+        </li>
+        <li>
+            <a href="#about">Logout</a>
+        </li>
+    </ul>
 
-<input type="checkbox" name="vehicle2" value="Car">Car
+    <div class="grid-container">
+        <div class="item1">
+            <b>Register</b>
+        </div>
+    </div>
 
-<input type="checkbox" name="vehicle2" value="Train">Train
+    <div class="container">
+        <br>
+        <br>
+        <form>
+            First name:
+            <br>
+            <input type="text" name="firstname">
+            <br> Last name:
+            <br>
+            <input type="text" name="lastname">
+            <br> Username:
+            <br>
+            <input type="text" name="username">
+            <br> Password:
+            <br>
+            <input type="password" name="psw">
+            <br> Confirm Password:
+            <br>
+            <input type="password" name="confirm password">
+            <br> Email:
+            <br>
+            <input type="text" name="email">
+            <br> Country:
+            <br>
+            <input type="text" name="country">
+            <br> City:
+            <br>
+            <input type="text" name="city">
+            <br> Birthday:
+            <br>
+            <input type="date" name="bday">
+            <br>
 
-<input type="checkbox" name="vehicle2" value="Bus">Bus
-<p>Write a description about you.</p>
-<textarea name="message" rows="10" cols="50"></textarea>
-  <br>
-  <input type="submit">
-  <input type="reset">
-<br><br>
+            <p>Gender:</p>
+            <input type="radio" name="gender" value="male" checked> Male
+            <input type="radio" name="gender" value="female"> Female
 
-</form>
-</div>
-    
-    
-    
+            <p>Preferences regarding transportation</p>
+            <input type="checkbox" name="vehicle1" value="Plain">Plain
+            <input type="checkbox" name="vehicle2" value="Car">Car
+            <input type="checkbox" name="vehicle2" value="Train">Train
+            <input type="checkbox" name="vehicle2" value="Bus">Bus
+
+            <p>Write a description about you.</p>
+            <textarea name="message" rows="10" cols="50"></textarea>
+            <br>
+
+            <input type="submit">
+            <input type="reset">
+            <br>
+            <br>
+
+        </form>
+    </div>
+
+
+
 </body>
+
 </html>
