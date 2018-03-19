@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(233, 233, 251);
+            background-image: no-repeat;
+            background-size: cover;
+
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        div.container {
+            display: inline-block;
+            width: 10px;
+        }
+
+
+        .item1 {
+            grid-area: header;
+            color: white;
+            background-color: rgb(96, 124, 167);
+            padding: 8px;
+            text-align: left;
+            font-size: 16px;
+            font-family: Ariel;
+            border-radius: 10px;
+            letter-spacing:1.5px;
+            text-shadow: 2px 3px 5px red;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas: 'header header header header header header';
+            grid-gap: 10px;
+            background-color: rgb(233, 233, 251);
+            padding: 10px;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="item1"><h3><b>Contact </b></h3></div>
+        
+
+
+
+</body>
+
+</html>
