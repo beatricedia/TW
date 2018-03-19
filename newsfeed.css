@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border box ;
+}
 /*Container*/
 .gridContainer{
 
@@ -90,11 +92,21 @@
     grid-column: 3/5;
     grid-row: 3/4;
 }
+.interactions fieldset{
+
+    height: 100%;
+}
 .footerBar{
 
     background: white;
     grid-column: 2/5;
     grid-row: 4/5;
+}
+
+.footerBar img{
+
+    display: block;
+    margin:0 auto;
 }
 
 /*End grid model*/
