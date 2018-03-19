@@ -1,114 +1,9 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-    <style>
-       
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-       
-        div.container {
-            display: inline-block;
-            width: 10px;
-            height: 80%;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: rgb(9, 9, 42);
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 16px;
-            text-decoration: none;
-
-        }
-
-        li a:hover {
-            background-color: #111111;
-        }
-
-
-        .item1 {
-            grid-area: header;
-            color: black;
-            background-color: white;
-            padding: 1em;
-            text-align: left;
-            font-size: 20px;
-            height: 15%;
-            font-family: "Courier body copy";
-
-
-
-        }
-
-        .item2 {
-            grid-area: menu;
-            color: white;
-            background-color: rgb(8, 8, 43);
-            padding: 1em;
-            text-align: left;
-            font-size: 15px;
-            height: 95%;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .item3 {
-            grid-area: main;
-            background-color: rgb(233, 233, 251);
-            padding: 1em;
-            text-align: left;
-            font-size: 15px;
-            height: 95%;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-
-
-        }
-
-        .item4 {
-            grid-area: right;
-            background-color: white;
-            padding: 1em;
-            text-align: left;
-            font-size: 17px;
-            border-radius: 20px;
-
-        }
-
-        .item5 {
-            grid-area: footer;
-            background-color: rgb(233, 233, 251) padding: 1em;
-            text-align: left;
-            font-size: auto;
-            height: 75%;
-
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-areas: 'menu header header header header header' 'menu main main right right right' 'menu footer footer footer footer footer';
-            grid-gap: 10px;
-            background-color: rgb(233, 233, 251);
-            padding: 10px;
-            height: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="profile.css" />
 
     <script>
         function createPopup(url) {
@@ -171,4 +66,5 @@
 <script>
     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 </script>
+
 </html>
