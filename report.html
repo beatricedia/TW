@@ -7,6 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="headerStyle.css" />
     <script src="main.js"></script>
+    <style>
+        
+            .gridContainer{
+    
+                display: grid;
+                grid-template-columns: 200px auto 200px;
+                grid-template-rows: 300px auto 300px;
+                grid-template-areas: ". . . " ". form ." ". . .";
+            }
+            .theform{
+
+                grid-area: form;
+                
+            }
+            .theform fieldset{
+
+                background: rgb(152, 189, 211);
+                border-radius: 10px;
+                width: 500px;
+                margin: 0 auto;
+            }
+    </style>
 </head>
 <body>
         <nav role="navigation">
@@ -25,15 +47,14 @@
                     </li>
                 </ul>
             </nav>
+    <div class="gridContainer">
+        <div class="theform">
     <form>
         <fieldset>
             <legend>
                 Report Migration
             </legend>
-            <select name="typesOfMigrations">
-                <option value="internalMigration">Internal Migration</option>
-                <option value="stateMigration">States Migration</option>
-            </select>
+            <p>Origin</p>
             <select name="cities">
                 <option value="Iasi">Iasi</option>
                 <option value="Bucuresti">Bucuresti</option>
@@ -47,7 +68,24 @@
                 <option value="Germany">Germany</option>
                 <option value="Spain">Spain</option>
             </select>
+            <p>Target</p>
+            <select name="cities">
+                <option value="Iasi">Iasi</option>
+                <option value="Bucuresti">Bucuresti</option>
+                <option value="Timisoara">Timisoara</option>
+                <option value="Barlad">Barlad</option>
+            </select>
+            <select name="states">
+                <option value="Romania">Romania</option>
+                <option value="France">France</option>
+                <option value="Unitated Kingdom">Unitated Kingdom</option>
+                <option value="Germany">Germany</option>
+                <option value="Spain">Spain</option>
+            </select>
+            <button name="Report" style="display:block">Report</button>
         </fieldset>
     </form>
+    </div>
+    </div>
 </body>
 </html>
