@@ -1,78 +1,19 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-    <style>
-        body {
-            background-color: rgb(233, 233, 251);
-            background-image: no-repeat;
-            background-size: cover;
-
-        }
-
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-
-
-        div.container {
-            display: inline-block;
-            width: 10px;
-        }
-
-
-        .item1 {
-            grid-area: header;
-            color: white;
-            background-color: rgb(96, 124, 167);
-            padding: 8px;
-            text-align: left;
-            font-size: 16px;
-            font-family: Ariel;
-            border-radius: 10px;
-            letter-spacing:1.5px;
-            text-shadow: 2px 3px 5px red;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-areas: 'header header header header header header';
-            grid-gap: 10px;
-            background-color: rgb(233, 233, 251);
-            padding: 10px;
-        }
-
-
-        .form {
-            font-family: Arial;
-            width: 130%;
-            padding: 15px;
-        }
-
-
-        .form button {
-            font-family: Arial;
-            text-transform: uppercase;
-            background: rgb(9, 9, 42);
-            width: 100%;
-            border: 0;
-            padding: 15px;
-            color: #FFFFFF;
-            font-size: 14px;
-            margin: 15px;
-            border-radius: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="get_statistics.css">
 </head>
 
 <body>
 
     <div class="grid-container">
-        <div class="item1"><h3><b>Choose the desire format </b></h3></div>
+        <div class="item1">
+            <h3>
+                <b>Choose the desire format </b>
+            </h3>
+        </div>
 
         <div class="form">
 
@@ -81,8 +22,8 @@
             <button>JSON</button>
             <button>PDF</button>
 
-        </div>
-
+         </div>
+   </div>
 </body>
 
 </html>
