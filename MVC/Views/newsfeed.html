@@ -3,16 +3,97 @@
 
 <head>
 
-    
+
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/headerStyle.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/newsfeed.css" />
+    <style>
+        body {
+            font-family: sans-serif;
+        }
 
-    
-    
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="../src/maplabel-compiled.js"></script>
+
+    <script>
+        function init() {
+            var myLatlng = new google.maps.LatLng(42.3601, -71.0589);
+            var myOptions = {
+                zoom: 8,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+
+            addMarker({ lat: 42.4668, lng: -70.9495 });
+            addMarker({ lat: 42.7762, lng: -71.0773 });
+
+            function addMarker(coords) {
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
+                });
+                var infoWindow = new google.maps.InfoWindow({
+                    content: '<h1>Some data</h1>'
+                });
+
+                marker.addListener('click', function () {
+                    infoWindow.open(map, marker);
+                });
+
+
+            }
+            var flightPlanCoordinates = [
+                { lat: 42.4668, lng: -70.9495 },
+                { lat: 42.7762, lng: -71.0773 }
+            ];
+            var flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            flightPath.setMap(map);
+
+            var polyline = new GPolyline([
+                { position: { lat: 42.4668, lng: -70.9495 } },
+                { position: { lat: 42.7762, lng: -71.0773 } }],
+                "#000000", 10);
+            map.addOverlay(polyline);
+
+            var map2 = new google.maps.Map(document.getElementById('map2'), myOptions);
+
+            var move = document.getElementById('move');
+            google.maps.event.addDomListener(move, 'click', function () {
+                mapLabel.setMap(mapLabel.getMap() === map ? map2 : map);
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', init);
+    </script>
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12846745-20']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 
 </head>
 
@@ -54,7 +135,7 @@
             <article role="article">
                 <p>Transilvania its romanian land.</p>
             </article>
-            
+
         </div>
 
         <nav role="navigation" class="sideNavigation">
@@ -77,7 +158,9 @@
             </ul>
         </nav>
         <div class="map">
-        <p>Map</p>
+            <h2>Migration map</h2>
+            <div id="map"></div>
+
         </div>
         <div class="interactions">
             <fieldset style="background:white">
