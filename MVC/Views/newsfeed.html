@@ -9,55 +9,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../Content/headerStyle.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/newsfeed.css" />
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-
-        #map {
-            height: 300px;
-            width: 100%;
-        }
-    </style>
+    
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="../src/maplabel-compiled.js"></script>
 
     <script>
-        function init() {
-            var myLatlng = new google.maps.LatLng(42.3601, -71.0589);
-            var myOptions = {
-                zoom: 8,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById('map'), myOptions);
+          function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -33.8688, lng: 151.2195 },
+                zoom: 3,
+                mapTypeId: 'roadmap'
+            });
+
+            // Add a style-selector control to the map.
+            var styleControl = document.getElementById('style-selector-control');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
+
+            // Set the map's style to the initial value of the selector.
+            var styleSelector = document.getElementById('style-selector');
+            map.setOptions({ styles: styles[styleSelector.value] });
+
+            // Apply new JSON when the user selects a different style.
+            styleSelector.addEventListener('change', function () {
+                map.setOptions({ styles: styles[styleSelector.value] });
+            });
+            //searchPath(document.getElementById('pac-input1'));
+            // var lat1 = latitude;
+            //  var lng1 = longitude;
+            //searchPath(document.getElementById('pac-input2'));
+            // var lat2 = latitude;
+            // var lng2 = longitude;
+            // Create the search box and link it to the UI element.
+
+            //var first_flag = new google.maps.LatLng(58.983991,5.734863);
+            //var second_flag = new google.maps.LatLng(52.395715,4.888916);
+            function searchPath(input) {
+
+                var searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
 
-            addMarker({ lat: 42.4668, lng: -70.9495 });
-            addMarker({ lat: 42.7762, lng: -71.0773 });
+                var markers = [];
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener('places_changed', function () {
+                    var places = searchBox.getPlaces();
+                    //map.setZoom(5);
+                    if (places.length == 0) {
+                        return;
+                    }
 
-            function addMarker(coords) {
-                var marker = new google.maps.Marker({
-                    position: coords,
-                    map: map,
-                    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                    // Clear out the old markers.
+                    markers.forEach(function (marker) {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+
+                    var bounds = new google.maps.LatLngBounds();
+
+                    places.forEach(function (place) {
+                        if (!place.geometry) {
+                            //console.log("Returned place contains no geometry");
+                            console.log("latitude: " + place.geometry.location.lat() + ", longitude: " + place.geometry.location.lng());
+                            return;
+                        }
+
+                        // Create a marker for each place.
+                        markers.push(new google.maps.Marker({
+                            map: map,
+                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                            title: place.name,
+                            position: place.geometry.location,
+                            animation: google.maps.Animation.BOUNCE
+                        }));
+
+                        if (place.geometry.viewport) {
+                            // Only geocodes have viewport.
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+
+
+                        var latitude = place.geometry.location.lat();
+                        var longitude = place.geometry.location.lng();
+                        var location = { lat: latitude, lng: longitude };
+                    });
+                    map.fitBounds(bounds);
+
+
 
                 });
-                var infoWindow = new google.maps.InfoWindow({
-                    content: '<h1>Some data</h1>'
-                });
 
-                marker.addListener('click', function () {
-                    infoWindow.open(map, marker);
-                });
-
-
+                return location;
             }
+            //aici se termina functia de search
+
+
             var flightPlanCoordinates = [
-                { lat: 42.4668, lng: -70.9495 },
-                { lat: 42.7762, lng: -71.0773 }
+                searchPath(document.getElementById('pac-input1')),
+                searchPath(document.getElementById('pac-input2'))
+
             ];
             var flightPath = new google.maps.Polyline({
                 path: flightPlanCoordinates,
@@ -66,106 +121,335 @@
                 strokeOpacity: 1.0,
                 strokeWeight: 2
             });
-
             flightPath.setMap(map);
 
-
-
-            var map2 = new google.maps.Map(document.getElementById('map2'), myOptions);
-
-            var move = document.getElementById('move');
-            google.maps.event.addDomListener(move, 'click', function () {
-                mapLabel.setMap(mapLabel.getMap() === map ? map2 : map);
-            });
         }
-        google.maps.event.addDomListener(window, 'load', init);
-    </script>
-    <script>
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-12846745-20']);
-        _gaq.push(['_trackPageview']);
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+        var styles = {
+            default: null,
+            silver: [
+                {
+                    elementType: 'geometry',
+                    stylers: [{ color: '#f5f5f5' }]
+                },
+                {
+                    elementType: 'labels.icon',
+                    stylers: [{ visibility: 'off' }]
+                },
+                {
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#616161' }]
+                },
+                {
+                    elementType: 'labels.text.stroke',
+                    stylers: [{ color: '#f5f5f5' }]
+                },
+                {
+                    featureType: 'administrative.land_parcel',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#bdbdbd' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#eeeeee' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#757575' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#e5e5e5' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9e9e9e' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#ffffff' }]
+                },
+                {
+                    featureType: 'road.arterial',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#757575' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#dadada' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#616161' }]
+                },
+                {
+                    featureType: 'road.local',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9e9e9e' }]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#e5e5e5' }]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#eeeeee' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#c9c9c9' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9e9e9e' }]
+                }
+            ],
 
+            night: [
+                { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#263c3f' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#6b9a76' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#38414e' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#212a37' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9ca5b3' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#746855' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#1f2835' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#f3d19c' }]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#2f3948' }]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#17263c' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#515c6d' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{ color: '#17263c' }]
+                }
+            ],
+
+            retro: [
+                { elementType: 'geometry', stylers: [{ color: '#ebe3cd' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#523735' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#f5f1e6' }] },
+                {
+                    featureType: 'administrative',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#c9b2a6' }]
+                },
+                {
+                    featureType: 'administrative.land_parcel',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#dcd2be' }]
+                },
+                {
+                    featureType: 'administrative.land_parcel',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#ae9e90' }]
+                },
+                {
+                    featureType: 'landscape.natural',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#dfd2ae' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#dfd2ae' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#93817c' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry.fill',
+                    stylers: [{ color: '#a5b076' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#447530' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#f5f1e6' }]
+                },
+                {
+                    featureType: 'road.arterial',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#fdfcf8' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#f8c967' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#e9bc62' }]
+                },
+                {
+                    featureType: 'road.highway.controlled_access',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#e98d58' }]
+                },
+                {
+                    featureType: 'road.highway.controlled_access',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#db8555' }]
+                },
+                {
+                    featureType: 'road.local',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#806b63' }]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#dfd2ae' }]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#8f7d77' }]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{ color: '#ebe3cd' }]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#dfd2ae' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry.fill',
+                    stylers: [{ color: '#b9d3c2' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#92998d' }]
+                }
+            ],
+
+        };
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX-6vsQMybJX-Z6KVLcwxHTjJDBMKkgeQ&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </head>
 
 <body>
 
-    <nav role="navigation">
-        <ul class="uli">
-            <li>
-                <a href="newsfeed.html">Home</a>
-            </li>
-            <li>
-                <a href="Profile.html">Profile</a>
-            </li>
-            <li>
-                <a href="Settings.html">Settings</a>
-            </li>
-            <li>
-                <a href="default.html">Logout</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="gridContainer">
-        <div class="reports">
-            <h1 id="title">
-                Reports
-            </h1>
-            <article role="article">
-                <p>User x reports that romanians are migrating into the Savanas.</p>
-            </article>
-            <article role="article">
-                <p>Syrians refugees are entering US.</p>
-            </article>
-            <article role="article">
-                <p>London has registered a rise of anti emigration.People are running out of the streets.</p>
-            </article>
-            <article role="article">
-                <p>Italian migrants in US don't know how to read.</p>
-            </article>
-            <article role="article">
-                <p>Transilvania its romanian land.</p>
-            </article>
+    <ul>
+        <li>
+            <a href="newsfeed.html">Home</a>
+        </li>
+        <li>
+            <a href="Profile.html">Profile</a>
+        </li>
+       
+        <li>
+            <a href="default.html">Logout</a>
+        </li>
+    </ul>
+    <div class="grid-container">
 
-        </div>
-
-        <nav role="navigation" class="sideNavigation">
-            <ul class="gridSidebar">
-                <li id="report">
-                    <a href="report.html">
-                        Report
-                    </a>
-                </li>
-                <li id="statistics">
-                    <a href="Get_statistics.html">
-                        Statistics
-                    </a>
-                </li>
-                <li id="vizualizare">
-                    <a href="#vizualizare">
-                        Vizualizare
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="map">
-            <h2>Migration map</h2>
+        <div class="item2">
             <div id="map"></div>
-
         </div>
-        <div class="interactions">
-            <fieldset style="background:white">
+        <div class="item3">
+            <input id="pac-input1" class="controls" type="text" placeholder="Enter origin location">
+            <input id="pac-input2" class="controls" type="text" placeholder="Enter destination location">
 
-            </fieldset>
+            <div id="style-selector-control" class="map-control">
+                <select id="style-selector" class="selector-control">
+                    <option value="default">Default</option>
+                    <option value="silver">Silver</option>
+                    <option value="night">Night mode</option>
+                    <option value="retro" selected="selected">Retro</option>
+                </select>
+            </div>
+            <button><b>Submit</b> <br><b>migration</b></button>
+            <button><b>Generate</b> <br><b>raports</b></button>
         </div>
-        <footer role="contentinfo" class="footerBar">
-            <img src="../Content/rss.png" style="width:100px">
-        </footer>
+        <div class="item4">Right</div>
+        <div class="item5">Footer</div>
     </div>
 
 </body>
