@@ -5,6 +5,17 @@
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/register.css" />
     <title>Register</title>
+    <script src = "/MVC/Scripts/register.js"></script>
+    <script src = "/MVC/Scripts/countries.js"></script>
+    <script src = "/MVC/Scripts/countries.js"></script>
+    <script>
+        console.log(countries)
+         $(function() {
+            $( "#countries" ).autocomplete({
+               source: countries
+            });
+         });
+      </script>
 </head>
 
 <body>
@@ -12,16 +23,7 @@
 
     <ul>
         <li>
-            <a href="newsfeed.html">Home</a>
-        </li>
-        <li>
-            <a href="Profile.html">Profile</a>
-        </li>
-        <li>
-            <a href="Settings.html">Settings</a>
-        </li>
-        <li>
-            <a href="default.html">Logout</a>
+            <a href="default.html">Start Page</a>
         </li>
     </ul>
 
@@ -37,28 +39,28 @@
         <form>
             First name:
             <br>
-            <input type="text" name="firstname">
+            <input type="text" name="firstname" id="firstname-input" onkeyup="validateForm()">
             <br> Last name:
             <br>
-            <input type="text" name="lastname">
+            <input type="text" name="lastname" id="lastname-input" onkeyup="validateForm()">
             <br> Username:
             <br>
-            <input type="text" name="username">
+            <input type="text" name="username" id="username-input" onkeyup="validateForm()"> 
             <br> Password:
             <br>
-            <input type="password" name="psw">
+            <input type="password" name="psw" id="psw-input" onkeyup="validateForm()">
             <br> Confirm Password:
             <br>
-            <input type="password" name="confirm password">
+            <input type="password" name="confirm password" id="cpsw-input" onkeyup="validateForm()">
             <br> Email:
             <br>
-            <input type="text" name="email">
+            <input type="text" name="email" id="email-input" onkeyup="validateForm()">
             <br> Country:
             <br>
-            <input type="text" name="country">
+            <input type="text"  class="textInput" name="country" id="countries" onkeyup="validateForm()">
             <br> City:
             <br>
-            <input type="text" name="city">
+            <input type="text"  name="city" id="city-input" onkeyup="validateForm()">
             <br> Birthday:
             <br>
             <input type="date" name="bday">
