@@ -9,13 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../Content/headerStyle.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/newsfeed.css" />
-    
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="../src/maplabel-compiled.js"></script>
-
     <script>
-          function initAutocomplete() {
+
+
+        function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -33.8688, lng: 151.2195 },
                 zoom: 3,
@@ -415,7 +414,6 @@
 </head>
 
 <body>
-
     <ul>
         <li>
             <a href="newsfeed.html">Home</a>
@@ -423,7 +421,7 @@
         <li>
             <a href="Profile.html">Profile</a>
         </li>
-       
+
         <li>
             <a href="default.html">Logout</a>
         </li>
@@ -445,8 +443,30 @@
                     <option value="retro" selected="selected">Retro</option>
                 </select>
             </div>
-            <button><b>Submit</b> <br><b>migration</b></button>
-            <button><b>Generate</b> <br><b>raports</b></button>
+            <table>
+                <tr>
+                    <td>Starting Date</td>
+                    <td>
+                        <input type="date" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return Date</td>
+                    <td>
+                        <input type="date" class="inputText">
+                    </td>
+                </tr>
+            </table>
+            <button>
+                <b>Submit</b>
+                <br>
+                <b>migration</b>
+            </button>
+            <button>
+                <b>Generate</b>
+                <br>
+                <b>raports</b>
+            </button>
         </div>
         <div class="item4">Right</div>
         <div class="item5">Footer</div>
