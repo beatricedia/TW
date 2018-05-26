@@ -48,45 +48,122 @@
             <input type="text" name="username" id="username-input" onkeyup="validateForm()"> 
             <br> Password:
             <br>
-            <input type="password" name="psw" id="psw-input" onkeyup="validateForm()">
+            <input type="password" id="psw" name="psw" onkeyup="check()">
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A
+                    <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A
+                    <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A
+                    <b>number</b>
+                </p>
+                <p id="length" class="invalid">Minimum
+                    <b>8 characters</b>
+                </p>
+            </div>
             <br> Confirm Password:
             <br>
-            <input type="password" name="confirm password" id="cpsw-input" onkeyup="validateForm()">
+            <input type="password" name="confirm password" id="cpsw-input" onkeyup="check()">
+            <br>
+            <span id='message2'></span>
             <br> Email:
             <br>
             <input type="text" name="email" id="email-input" onkeyup="validateForm()">
             <br> Country:
             <br>
-            <input type="text"  class="textInput" name="country" id="countries" onkeyup="validateForm()">
+            <input type="text" class="textInput" name="country" id="countries" onkeyup="validateForm()">
             <br> City:
             <br>
-            <input type="text"  name="city" id="city-input" onkeyup="validateForm()">
-            <br> Birthday:
+            <input type="text" name="city" id="city-input" onkeyup="validateForm()">
             <br>
-            <input type="date" name="bday">
-            <br>
-
-            <p>Gender:</p>
-            <input type="radio" name="gender" value="male" checked> Male
-            <input type="radio" name="gender" value="female"> Female
-
-            <p>Preferences regarding transportation</p>
-            <input type="checkbox" name="vehicle1" value="Plain">Plain
-            <input type="checkbox" name="vehicle2" value="Car">Car
-            <input type="checkbox" name="vehicle2" value="Train">Train
-            <input type="checkbox" name="vehicle2" value="Bus">Bus
-
             <p>Write a description about you.</p>
             <textarea name="message" rows="10" cols="50"></textarea>
             <br>
-
-            <input type="submit">
-            <input type="reset">
-            <br>
-            <br>
-
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
         </form>
     </div>
+
+
+
+    <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+        var fn_value = document.getElementById("firstname-input").value;
+        var ln_value = document.getElementById("lastname-input").value;
+        var username_value = document.getElementById("username-input").value;
+        var email_value = document.getElementById("email-input").value;
+        var country_value = document.getElementById("countries").value;
+        var i;
+        var check = function () {
+            if (document.getElementById("psw").value == document.getElementById("cpsw-input").value) {
+                document.getElementById('message2').style.color = 'green';
+                document.getElementById('message2').innerHTML = 'matching';
+            } else {
+                document.getElementById('message2').style.color = 'red';
+                document.getElementById('message2').innerHTML = 'not matching';
+            }
+        }
+
+
+    </script>
 
 
 
