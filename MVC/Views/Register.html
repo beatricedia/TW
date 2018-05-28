@@ -5,25 +5,36 @@
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="../Content/register.css" />
     <title>Register</title>
-    <script src = "/MVC/Scripts/register.js"></script>
-    <script src = "/MVC/Scripts/countries.js"></script>
-    <script src = "/MVC/Scripts/countries.js"></script>
+
+    <script src="MVC/Scripts/register.js"></script>
+    <script src="MVC/Scripts/countries.js"></script>
+    <script src="MVC/Scripts/countries.json"></script>
     <script>
         console.log(countries)
-         $(function() {
-            $( "#countries" ).autocomplete({
-               source: countries
+        $(function () {
+            $("#countries").autocomplete({
+                source: countries
             });
-         });
-      </script>
+        });
+    </script>
 </head>
 
 <body>
 
 
+
     <ul>
         <li>
-            <a href="default.html">Start Page</a>
+            <a href="newsfeed.html">Home</a>
+        </li>
+        <li>
+            <a href="Profile.html">Profile</a>
+        </li>
+        <li>
+            <a href="Settings.html">Settings</a>
+        </li>
+        <li>
+            <a href="default.html">Logout</a>
         </li>
     </ul>
 
@@ -34,18 +45,20 @@
     </div>
 
     <div class="container">
-        <br>
-        <br>
         <form>
             First name:
             <br>
-            <input type="text" name="firstname" id="firstname-input" onkeyup="validateForm()">
+            <input type="text" name="firstname" id="firstname-input" onkeyup="checkFname()">
+            <br>
+            <span id='message3'></span>
             <br> Last name:
             <br>
-            <input type="text" name="lastname" id="lastname-input" onkeyup="validateForm()">
+            <input type="text" name="lastname" id="lastname-input" onkeyup="checkLname()">
+            <br>
+            <span id='message4'></span>
             <br> Username:
             <br>
-            <input type="text" name="username" id="username-input" onkeyup="validateForm()"> 
+            <input type="text" name="username" id="username-input" onkeyup="validateForm()">
             <br> Password:
             <br>
             <input type="password" id="psw" name="psw" onkeyup="check()">
@@ -80,8 +93,8 @@
             <p>Write a description about you.</p>
             <textarea name="message" rows="10" cols="50"></textarea>
             <br>
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
+            <button id="btn1">Submit</button>
+            <button id="btn2" href="Register.html">Reset</button>
         </form>
     </div>
 
@@ -146,12 +159,14 @@
             }
         }
 
-        var fn_value = document.getElementById("firstname-input").value;
+        //var fn_value = document.getElementById("firstname-input").value;
+        //var fn_length = fn_value.length;
         var ln_value = document.getElementById("lastname-input").value;
+        var ln_length = ln_value.length;
         var username_value = document.getElementById("username-input").value;
         var email_value = document.getElementById("email-input").value;
         var country_value = document.getElementById("countries").value;
-        var i;
+        submitOK = "true";
         var check = function () {
             if (document.getElementById("psw").value == document.getElementById("cpsw-input").value) {
                 document.getElementById('message2').style.color = 'green';
@@ -160,10 +175,42 @@
                 document.getElementById('message2').style.color = 'red';
                 document.getElementById('message2').innerHTML = 'not matching';
             }
+
         }
 
+        var checkLname = function () {
+            if (isNaN(document.getElementById("lastname-input").value) == 0 || document.getElementById("lastname-input").value.length < 2 || document.getElementById("firstname-input").value.length > 10) {
+                document.getElementById('message4').style.color = 'red';
+                document.getElementById('message4').innerHTML = 'The nameshould be only from characters or in the interval (2,10)';
+                submitOK = "false";
+            }
+            else {
+                document.getElementById('message4').style.color = 'green';
+                document.getElementById('message4').innerHTML = 'Valid';
 
+            }
+
+            if (submitOK == "false") {
+                return false;
+            }
+        }
+        var checkFname = function () {
+            if (isNaN(document.getElementById("firstname-input").value) == 0 || document.getElementById("firstname-input").value.length < 2 || document.getElementById("firstname-input").value.length > 10) {
+                document.getElementById('message3').style.color = 'red';
+                document.getElementById('message3').innerHTML = 'The nameshould be only from characters or in the interval (2,10)';
+                submitOK = "false";
+            }
+            else {
+                document.getElementById('message3').style.color = 'green';
+                document.getElementById('message3').innerHTML = 'Valid';
+
+            }
+            if (submitOK == "false") {
+                return false;
+            }
+        }
     </script>
+
 
 
 
