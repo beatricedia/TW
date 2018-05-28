@@ -447,13 +447,13 @@
                 <tr>
                     <td>Starting Date</td>
                     <td>
-                        <input type="date" class="inputText">
+                        <input type="date" id="inputText1">
                     </td>
                 </tr>
                 <tr>
                     <td>Return Date</td>
                     <td>
-                        <input type="date" class="inputText">
+                        <input type="date" id="inputText2">
                     </td>
                 </tr>
             </table>
@@ -472,6 +472,13 @@
         <div class="item5">Footer</div>
     </div>
 
+<script>
+var org_loc=document.getElementById("pac-input1").value;
+var dest_loc=document.getElementById("pac-input2").value;
+var start_date=document.getElementById("inputText1").value;
+var end_date=document.getElementById("inputText2").value;
+
+</script>
 </body>
 
 </html>

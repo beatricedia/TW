@@ -149,7 +149,8 @@ li a:hover {
    
 }
 
-.inputText {
+#inputText1,
+#inputText2 {
 
     background-color: rgba(237, 242, 244, 1);
     border: 2px solid rgba(141, 153, 174, 1);
